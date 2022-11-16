@@ -12,7 +12,14 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'hard to guess string'
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://localhost/flasky"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://{dbuser}:{dbpass}@{dbhost}/{dbname}".format(
+    dbuser=os.environ['DBUSER'],
+    dbpass=os.environ['DBPASS'],
+    dbhost=os.environ['DBHOST'] + ".postgres.database.azure.com",
+    dbname=os.environ['DBNAME']
+)
+
+DATABASE_URI = 'postgresql+psycopg2://
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 bootstrap = Bootstrap(app)
