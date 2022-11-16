@@ -19,7 +19,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://{dbuser}:{dbpass}@{dbhost}
     dbname=os.environ['DBNAME']
 )
 
-DATABASE_URI = 'postgresql+psycopg2://
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 bootstrap = Bootstrap(app)
